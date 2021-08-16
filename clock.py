@@ -9,11 +9,12 @@ while True:
     c_time = time.time()
     c_time_str = time.strftime("%H:%M:%S", time.localtime(c_time))
     d_time = c_time - s_time
-    d_time_str = time.strftime("%H:%M:%S", time.gmtime(d_time))
+    d_time_str = time.strftime(":%H:%M:%S", time.gmtime(d_time))
+    d_days = int(time.strftime("%j", time.gmtime(d_time)))-1
     date = time.strftime('%Y-%m-%d')
     text = f"Date     {date} "\
            f"Start      {s_time_str} "\
            f"Current    {c_time_str} "\
-           f"Duration   {d_time_str} "
+           f"Uptime {d_days:3d}{d_time_str} "
     lcd.text(text, 1)
     time.sleep(.4)
