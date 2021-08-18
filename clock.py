@@ -1,5 +1,6 @@
 from rpi_lcd import LCD
 import time
+import psutil
 
 lcd = LCD()
 lines = []
@@ -12,5 +13,6 @@ while True:
     date = time.strftime('%Y-%m-%d')
     lcd.text(f"Date      {date} ",1)
     lcd.text(f"Time        {t_str}", 2)
+    lcd.text(f" {psutil.getloadavg()}", 3)
     lcd.text(f"Uptime  {d_days:3d}{d_time_str}", 4)
     time.sleep(.4)
